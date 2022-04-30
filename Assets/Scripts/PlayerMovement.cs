@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
     public float jumpForce;
     public float mouseSensitivity;
-    public float moveSpeed;
+    public static float moveSpeed;
     private float moveHorizontal;
     private float moveVertical;
     private float moveX;
@@ -50,6 +50,16 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(new Vector3(0, 2.0f, 0) * jumpForce, ForceMode.Impulse);
         }
+        //SpeedUp holding shift
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        {
+            moveSpeed = 8f;
+        }
+        else
+        {
+            moveSpeed = 4f;
+        }
+        
 
     }
     private void OnCollisionStay(Collision collision)

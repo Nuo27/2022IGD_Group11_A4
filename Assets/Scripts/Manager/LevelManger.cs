@@ -14,7 +14,12 @@ public class LevelManger : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.P)){
-            Cursor.lockState = CursorLockMode.None;
+            if(Cursor.lockState == CursorLockMode.Locked){
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else{
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 }
