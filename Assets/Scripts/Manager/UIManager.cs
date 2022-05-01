@@ -98,15 +98,15 @@ public class UIManager : MonoBehaviour
     string SetAccomplishedObjectiveText(int CurrentLevelIndex){
         switch(CurrentLevelIndex){
             case 1:
-                return "Level 1 Accomplished Objective text";
+                return "Level 1 Accomplished Objective text" + "Return to Main in 3 sec...";
             case 2:
-                return "Level 2 Accomplished Objective text";
+                return "Level 2 Accomplished Objective text" + "Return to Main in 3 sec...";
             case 3:
-                return "Level 3 Accomplished Objective text";
+                return "Level 3 Accomplished Objective text" + "Return to Main in 3 sec...";
             case 4:
-                return "Level 4 Accomplished Objective text";
+                return "Level 4 Accomplished Objective text" + "Return to Main in 3 sec...";
             case 5:
-                return "Level Tutorial Objective Accomplished";
+                return "Level Tutorial Objective Accomplished" + "Return to Main in 3 sec...";
             case 6:
                 return "Level Test Objective Accomplished: New memory gained; CG now will load";
             default:
@@ -115,11 +115,18 @@ public class UIManager : MonoBehaviour
     }
     public void OnClickTutorialDone(){
         LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
-        SceneManager.LoadScene(0);
+        Invoke("returnMain",3f);
     }
     public void onClickRestart(){
         
         SceneManager.LoadScene(LevelManager.GetCurrentLevelIndex());
+    }
+    public void onClickTestObjectiveAccomplished(){
+        LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
+        Invoke("returnMain",3f);
+    }
+    void returnMain(){
+        SceneManager.LoadScene(0);
     }
     public void OnClickReturnMain(){
         
