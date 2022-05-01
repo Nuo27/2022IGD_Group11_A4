@@ -11,32 +11,50 @@ public class UIManager : MonoBehaviour
     public GameObject MessageHolder;
     public TMPro.TextMeshProUGUI ObjectiveText;
     public TMPro.TextMeshProUGUI CurrentLevelText;
+    public TMPro.TextMeshProUGUI AccomplishedObjectiveText;
+    public GameObject minimap;
+    public TMPro.TextMeshProUGUI ResetText;
     void Start()
     {
-        
+        //if restarting level, reset everthing
+        AccomplishedObjectiveText.text = SetAccomplishedObjectiveText(LevelManager.GetCurrentLevelIndex());
         ObjectiveText.text = SetObjectiveText(LevelManager.GetCurrentLevelIndex());
         CurrentLevelText.text = SetCurrentLevelText(LevelManager.GetCurrentLevelIndex());
         Invoke("KillLevelStartMessages", 3f);
-        DontDestroyOnLoad(gameObject);
+        
+        //DontDestroyOnLoad(gameObject);
     }
     void KillLevelStartMessages(){
         LevelMessageHolder.SetActive(false);
         ControlMessageHolder.SetActive(false);
+        minimap.SetActive(true);
         //Destroy(LevelMessageHolder);
     }
     // Update is called once per frame
     void Update()
     {
-
         if(LevelManager.checkCurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex())){
             Debug.Log("Level Objective Done");
             callOutMessage(); 
         }
+        if(PlayerMovement.playerPosY < -10){
+            ResetText.text = "You died...restarting level in 3 sec...";
+            Invoke("Restartinglevel", 3f);
+        }
+        else{
+            ResetText.text = "";
+        }
+
     }
+    void Restartinglevel(){
+        LevelManager.reloadLevel = true;
+    }
+
     private void callOutMessage(){
         MessageHolder.SetActive(true);
         Invoke("killMessage", 2.0f);
     }
+
     void killMessage(){
         Destroy(MessageHolder);
         //MessageHolder.SetActive(false);
@@ -77,11 +95,34 @@ public class UIManager : MonoBehaviour
                 return "";
         }
     }
+    string SetAccomplishedObjectiveText(int CurrentLevelIndex){
+        switch(CurrentLevelIndex){
+            case 1:
+                return "Level 1 Accomplished Objective text";
+            case 2:
+                return "Level 2 Accomplished Objective text";
+            case 3:
+                return "Level 3 Accomplished Objective text";
+            case 4:
+                return "Level 4 Accomplished Objective text";
+            case 5:
+                return "Level Tutorial Objective Accomplished";
+            case 6:
+                return "Level Test Objective Accomplished: New memory gained; CG now will load";
+            default:
+                return "";
+        }
+    }
     public void OnClickTutorialDone(){
         LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
         SceneManager.LoadScene(0);
     }
+    public void onClickRestart(){
+        
+        SceneManager.LoadScene(LevelManager.GetCurrentLevelIndex());
+    }
     public void OnClickReturnMain(){
+        
         if(!StartSceneManager.isReturningToMain){
             StartSceneManager.isReturningToMain = true;
         }

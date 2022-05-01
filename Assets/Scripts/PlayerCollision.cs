@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    public static bool isKeyRedFlowerFound = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +20,8 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "Collectable")
         {
-            isKeyRedFlowerFound = true;
             Destroy(collision.gameObject);
-            LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
-            PlayerCollision.isKeyRedFlowerFound = false;
-            
+            LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());;
         }
     }
 }

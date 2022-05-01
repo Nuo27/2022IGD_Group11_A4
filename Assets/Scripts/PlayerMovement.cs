@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveY;
     private float rotationY = 0.0f;
     private bool isSpeedingUp = false;
+    public static float playerPosY;
 
     public GameObject target;
 
@@ -28,12 +29,13 @@ public class PlayerMovement : MonoBehaviour
         jumpForce = 4f;
         mouseSensitivity = 4f;
         moveSpeed = 4f;
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        //get player pos y
+        playerPosY = transform.position.y;
         //movement inputs
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
@@ -60,18 +62,17 @@ public class PlayerMovement : MonoBehaviour
         }
         if (!Input.GetKey(KeyCode.LeftShift))
         {
-            if(!isGrounded){
+            if (!isGrounded)
+            {
                 isSpeedingUp = true;
                 moveSpeed = 8f;
             }
-            else{
+            else
+            {
                 isSpeedingUp = false;
                 moveSpeed = 4f;
             }
         }
-
-        
-
     }
     private void OnCollisionStay(Collision collision)
     {
@@ -80,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = true;
         }
     }
+    
 
     private void OnCollisionExit(Collision other)
     {

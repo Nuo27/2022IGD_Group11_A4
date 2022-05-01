@@ -9,10 +9,10 @@ public class LevelManager : MonoBehaviour
     public static bool isLevel3ObjectiveComplete;
     public static bool isLevel4ObjectiveComplete;
     public static bool isTestObjectiveComplete;
+    public static bool reloadLevel = false;
     // Start is called before the first frame update
     void Start()
     {
-        
         Debug.Log("Current level index: " + GetCurrentLevelIndex());
     }
 
@@ -26,6 +26,10 @@ public class LevelManager : MonoBehaviour
             else{
                 Cursor.lockState = CursorLockMode.Locked;
             }
+        }
+        if(reloadLevel){
+            reloadLevel = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
     //get current level index
