@@ -44,5 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cd76b4b21d47a44a0528734d3deb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TutorialDone: 0
-  startSceneManager: {fileID: 0}
+  LevelMessageHolder: {fileID: 0}
+  ControlMessageHolder: {fileID: 0}
+  MessageHolder: {fileID: 0}
+  ObjectiveText: {fileID: 0}
+  CurrentLevelText: {fileID: 0}
