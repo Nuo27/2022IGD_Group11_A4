@@ -82,6 +82,8 @@ public class StartSceneManager : MonoBehaviour
     }
     public void Level1(){
         if(isTutorialDone){
+            //add code here to make replay notifcation appear
+            LevelManager.isLevel1ObjectiveComplete = false;
             SceneManager.LoadScene(1);
         }
         else{
@@ -91,6 +93,7 @@ public class StartSceneManager : MonoBehaviour
     }
     public void Level2(){
         if(isTutorialDone){
+            LevelManager.isLevel2ObjectiveComplete = false;
             SceneManager.LoadScene(2);
         }
         else{
@@ -100,6 +103,7 @@ public class StartSceneManager : MonoBehaviour
     }
     public void Level3(){
         if(isTutorialDone){
+            LevelManager.isLevel3ObjectiveComplete = false;
             SceneManager.LoadScene(3);
         }
         else{
@@ -109,6 +113,7 @@ public class StartSceneManager : MonoBehaviour
     }
     public void Level4(){
         if(isTutorialDone){
+            LevelManager.isLevel4ObjectiveComplete = false;
             SceneManager.LoadScene(4);
         }
         else{
@@ -120,6 +125,7 @@ public class StartSceneManager : MonoBehaviour
         LeanTween.scale(tutorialReminder, new Vector3(0, 0, 0), 0.5f).setEase(LeanTweenType.easeOutQuad); 
     }
     public void LoadTestScene(){
+        LevelManager.isTestObjectiveComplete = false;
         SceneManager.LoadScene(6);
     }
     //quit application
