@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private float moveX;
     private float moveY;
     private float rotationY = 0.0f;
+    private bool isSpeedingUp = false;
+    public static float playerPosY;
 
     public GameObject target;
 
@@ -27,12 +29,13 @@ public class PlayerMovement : MonoBehaviour
         jumpForce = 4f;
         mouseSensitivity = 4f;
         moveSpeed = 4f;
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        //get player pos y
+        playerPosY = transform.position.y;
         //movement inputs
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
@@ -50,17 +53,26 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(new Vector3(0, 2.0f, 0) * jumpForce, ForceMode.Impulse);
         }
-        //SpeedUp holding shift
+        //SpeedUp holding shift need to be adjusted with air speed**
+
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
+            isSpeedingUp = true;
             moveSpeed = 8f;
         }
-        else
+        if (!Input.GetKey(KeyCode.LeftShift))
         {
-            moveSpeed = 4f;
+            if (!isGrounded)
+            {
+                isSpeedingUp = true;
+                moveSpeed = 8f;
+            }
+            else
+            {
+                isSpeedingUp = false;
+                moveSpeed = 4f;
+            }
         }
-        
-
     }
     private void OnCollisionStay(Collision collision)
     {
@@ -69,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = true;
         }
     }
+    
 
     private void OnCollisionExit(Collision other)
     {
