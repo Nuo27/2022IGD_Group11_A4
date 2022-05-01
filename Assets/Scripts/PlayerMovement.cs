@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveX;
     private float moveY;
     private float rotationY = 0.0f;
+    private bool isSpeedingUp = false;
 
     public GameObject target;
 
@@ -50,15 +51,25 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(new Vector3(0, 2.0f, 0) * jumpForce, ForceMode.Impulse);
         }
-        //SpeedUp holding shift
+        //SpeedUp holding shift need to be adjusted with air speed**
+
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
+            isSpeedingUp = true;
             moveSpeed = 8f;
         }
-        else
+        if (!Input.GetKey(KeyCode.LeftShift))
         {
-            moveSpeed = 4f;
+            if(!isGrounded){
+                isSpeedingUp = true;
+                moveSpeed = 8f;
+            }
+            else{
+                isSpeedingUp = false;
+                moveSpeed = 4f;
+            }
         }
+
         
 
     }
