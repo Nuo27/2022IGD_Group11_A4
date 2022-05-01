@@ -25,6 +25,8 @@ public class StartSceneManager : MonoBehaviour
         if(isReturningToMain){
             Debug.Log("Returned to Main");
         }
+        // bool TestCheckMethod = LevelManager.checkCurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
+        // Debug.Log("Test Check Method: " + TestCheckMethod);
     }
 
     // Update is called once per frame
