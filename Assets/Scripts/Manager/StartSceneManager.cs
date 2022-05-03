@@ -13,6 +13,7 @@ public class StartSceneManager : MonoBehaviour
     public GameObject Levels;
     public GameObject SettingsMenu;
     public GameObject Credits;
+    public GameObject TestSceneEnter;
     public static bool isTutorialDone;
     public static bool isReturningToMain;
     public GameObject tutorialReminder;
@@ -51,12 +52,13 @@ public class StartSceneManager : MonoBehaviour
         //animation back normal
         LeanTween.moveLocalX(GameTitle, 0, 1.0f).setEase(LeanTweenType.easeOutQuad);
         LeanTween.moveLocalX(StartMenu, 0, 1.0f).setEase(LeanTweenType.easeOutQuad);
-        
+        TestSceneEnter.SetActive(true);
         Invoke("MoveTitleAndLevelsUp", 1.0f);
     }
     //Return Main Setup
     void ReturnMainSetup(){
         ClicktoStartButton.SetActive(false);
+        TestSceneEnter.SetActive(true);
         GameTitle.transform.localPosition = new Vector3(0,100,0);
         Levels.transform.localPosition = new Vector3(0,180,0);
     }
