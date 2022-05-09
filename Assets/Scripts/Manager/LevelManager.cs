@@ -74,8 +74,24 @@ public class LevelManager : MonoBehaviour
             case 5:
                 StartSceneManager.isTutorialDone = true;
                 break;
-            case 6:
-                isTestObjectiveComplete = true;
+        }
+    }
+    public static void SetCurrentLevelAccomplished(int CurrentLevelIndex, bool isAccomplished){
+        switch(CurrentLevelIndex){
+            case 1:
+                isLevel1ObjectiveComplete = isAccomplished;
+                break;
+            case 2:
+                isLevel2ObjectiveComplete = isAccomplished;
+                break;
+            case 3:
+                isLevel3ObjectiveComplete = isAccomplished;
+                break;
+            case 4:
+                isLevel4ObjectiveComplete = isAccomplished;
+                break;
+            case 5:
+                StartSceneManager.isTutorialDone = isAccomplished;
                 break;
         }
     }

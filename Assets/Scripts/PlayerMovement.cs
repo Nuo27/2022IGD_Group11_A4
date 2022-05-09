@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private float rotationY = 0.0f;
     private bool isSpeedingUp = false;
     public static float playerPosY;
-
+    public static bool isFreeze = false;
     public GameObject target;
 
 
@@ -29,11 +29,17 @@ public class PlayerMovement : MonoBehaviour
         jumpForce = 4f;
         mouseSensitivity = 4f;
         moveSpeed = 4f;
+        isFreeze = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!isFreeze){
+            PlayerControls();
+        }
+    }
+    void PlayerControls(){
         //get player pos y
         playerPosY = transform.position.y;
         //movement inputs

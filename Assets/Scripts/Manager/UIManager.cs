@@ -14,13 +14,18 @@ public class UIManager : MonoBehaviour
     public TMPro.TextMeshProUGUI AccomplishedObjectiveText;
     public GameObject minimap;
     public TMPro.TextMeshProUGUI ResetText;
+    public bool isGamePaused = false;
+    public GameObject pauseMenu;
+    public GameObject Pause;
+    public GameObject Settings;
+    
     void Start()
     {
         //if restarting level, reset everthing
         AccomplishedObjectiveText.text = SetAccomplishedObjectiveText(LevelManager.GetCurrentLevelIndex());
         ObjectiveText.text = SetObjectiveText(LevelManager.GetCurrentLevelIndex());
         CurrentLevelText.text = SetCurrentLevelText(LevelManager.GetCurrentLevelIndex());
-        Invoke("KillLevelStartMessages", 3f);
+        Invoke("KillLevelStartMessages", 5f);
         
         //DontDestroyOnLoad(gameObject);
     }
@@ -36,6 +41,10 @@ public class UIManager : MonoBehaviour
         if(LevelManager.checkCurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex())){
             Debug.Log("Level Objective Done");
             callOutMessage(); 
+            LevelManager.SetCurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex(), false);
+            //Invoke("returnMain",3f);
+            Invoke("OnClickReturnMain",3f);
+            
         }
         if(PlayerMovement.playerPosY < -10){
             ResetText.text = "You died...restarting level in 3 sec...";
@@ -44,8 +53,12 @@ public class UIManager : MonoBehaviour
         else{
             ResetText.text = "";
         }
-
+        if(!isGamePaused && Input.GetKeyDown(KeyCode.R)){
+            isGamePaused = true;
+            ActivePauseMenu();
+        }
     }
+
     void Restartinglevel(){
         LevelManager.reloadLevel = true;
     }
@@ -56,8 +69,8 @@ public class UIManager : MonoBehaviour
     }
 
     void killMessage(){
-        Destroy(MessageHolder);
-        //MessageHolder.SetActive(false);
+        //Destroy(MessageHolder);
+        MessageHolder.SetActive(false);
     }
     string SetObjectiveText(int CurrentLevelIndex){
         switch(CurrentLevelIndex){
@@ -70,9 +83,7 @@ public class UIManager : MonoBehaviour
             case 4:
                 return "Level 4 Objective text";
             case 5:
-                return "Level Tutorial Objective text";
-            case 6:
-                return "Find the red Flower";
+                return "TRY TO MOVE YOUR CHARACTER, and Find the Red Flower";
             default:
                 return "";
         }
@@ -89,8 +100,6 @@ public class UIManager : MonoBehaviour
                 return "Level 4";
             case 5:
                 return "Level Tutorial";
-            case 6:
-                return "level Test";
             default:
                 return "";
         }
@@ -107,8 +116,6 @@ public class UIManager : MonoBehaviour
                 return "Level 4 Accomplished Objective text" + "Return to Main in 3 sec...";
             case 5:
                 return "Level Tutorial Objective Accomplished" + "Return to Main in 3 sec...";
-            case 6:
-                return "Level Test Objective Accomplished: New memory gained; CG now will load";
             default:
                 return "";
         }
@@ -135,4 +142,27 @@ public class UIManager : MonoBehaviour
         }
         SceneManager.LoadScene(0);
     }
+    void ActivePauseMenu(){
+        pauseMenu.SetActive(true);
+        LeanTween.moveLocalX(Pause, 0, 1f);
+        PlayerMovement.isFreeze = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+    public void OnClickResume(){
+        pauseMenu.SetActive(false);
+        LeanTween.moveLocalX(Pause, -1300, 1f);
+        isGamePaused = false;
+        PlayerMovement.isFreeze = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    public void OnClickSetting(){
+        LeanTween.moveLocalX(Settings, 0, 1f);
+        LeanTween.moveLocalX(Pause, -450, 1f);
+    }
+    public void OnClickSettingsBack(){
+        LeanTween.moveLocalX(Settings, -450, 1f);
+        LeanTween.moveLocalX(Pause, 0, 1f);
+    }
+
+
 }
