@@ -123,7 +123,7 @@ public class StartSceneManager : MonoBehaviour
     }
     public void CloseTutorialReminder(){
         LeanTween.scale(tutorialReminder, new Vector3(0, 0, 0), 0.5f).setEase(LeanTweenType.easeOutQuad); 
-     SceneManager.LoadScene(6);
+     SceneManager.LoadScene(5);
     }
     //quit application
     public void Quit()
