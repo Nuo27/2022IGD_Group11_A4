@@ -83,7 +83,7 @@ public class UIManager : MonoBehaviour
             case 4:
                 return "Level 4 Objective text";
             case 5:
-                return "TRY TO MOVE YOUR CHARACTER, and Find the Red Flower";
+                return "TRY TO MOVE YOUR CHARACTER, and Find the candle";
             default:
                 return "";
         }
