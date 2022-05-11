@@ -88,7 +88,7 @@ public class UIManager : MonoBehaviour
             case 1:
                 return "Level 1 Objective text";
             case 2:
-                return "Level 2 Objective text";
+                return "Find the victim's body..";
             case 3:
                 return "Level 3 Objective text";
             case 4:
@@ -102,15 +102,15 @@ public class UIManager : MonoBehaviour
     string SetCurrentLevelText(int CurrentLevelIndex){
         switch(CurrentLevelIndex){
             case 1:
-                return "Level 1";
+                return "Day 1";
             case 2:
-                return "Level 2";
+                return "Day 2";
             case 3:
-                return "Level 3";
+                return "Day 3";
             case 4:
-                return "Level 4";
+                return "Day 4";
             case 5:
-                return "Level Tutorial";
+                return "Tutorial";
             default:
                 return "";
         }
@@ -118,15 +118,15 @@ public class UIManager : MonoBehaviour
     string SetAccomplishedObjectiveText(int CurrentLevelIndex){
         switch(CurrentLevelIndex){
             case 1:
-                return "Level 1 Accomplished Objective text" + "Return to Main in 3 sec...";
+                return "You passed out after feeling dizzy.." + " Return to Main in 3 sec...";
             case 2:
-                return "Level 2 Accomplished Objective text" + "Return to Main in 3 sec...";
+                return "You passed out after feeling dizzy.." + " Return to Main in 3 sec...";
             case 3:
-                return "Level 3 Accomplished Objective text" + "Return to Main in 3 sec...";
+                return "Level 3 Accomplished Objective text" + " Return to Main in 3 sec...";
             case 4:
-                return "Level 4 Accomplished Objective text" + "Return to Main in 3 sec...";
+                return "Level 4 Accomplished Objective text" + " Return to Main in 3 sec...";
             case 5:
-                return "Level Tutorial Objective Accomplished" + "Return to Main in 3 sec...";
+                return "Level Tutorial Objective Accomplished" + " Return to Main in 3 sec...";
             default:
                 return "";
         }
