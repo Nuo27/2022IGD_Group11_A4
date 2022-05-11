@@ -24,7 +24,7 @@ public class PlayerCollision : MonoBehaviour
             LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());;
         }
         if(collision.gameObject.tag == "OpenableDoor"){
-            Door.isDoorOpened = true;
+            //Door.isDoorOpened = true;
         }
     }
 }
