@@ -107,15 +107,15 @@ public class UIManager : MonoBehaviour
     string SetAccomplishedObjectiveText(int CurrentLevelIndex){
         switch(CurrentLevelIndex){
             case 1:
-                return "Level 1 Accomplished Objective text" + "Return to Main in 3 sec...";
+                return "You passed out after feeling dizzy.." + " Return to Main in 3 sec...";
             case 2:
-                return "Level 2 Accomplished Objective text" + "Return to Main in 3 sec...";
+                return "You passed out after feeling dizzy.." + " Return to Main in 3 sec...";
             case 3:
-                return "Level 3 Accomplished Objective text" + "Return to Main in 3 sec...";
+                return "Level 3 Accomplished Objective text" + " Return to Main in 3 sec...";
             case 4:
-                return "Level 4 Accomplished Objective text" + "Return to Main in 3 sec...";
+                return "Level 4 Accomplished Objective text" + " Return to Main in 3 sec...";
             case 5:
-                return "Level Tutorial Objective Accomplished" + "Return to Main in 3 sec...";
+                return "Level Tutorial Objective Accomplished" + " Return to Main in 3 sec...";
             default:
                 return "";
         }
