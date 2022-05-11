@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float mouseSensitivity;
     public static float moveSpeed;
+    public float moveMultiplier = 1.5f;
     private float moveHorizontal;
     private float moveVertical;
     private float moveX;
@@ -60,7 +61,6 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(new Vector3(0, 2.0f, 0) * jumpForce, ForceMode.Impulse);
         }
         //SpeedUp holding shift need to be adjusted with air speed**
-
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
             isSpeedingUp = true;
@@ -71,7 +71,8 @@ public class PlayerMovement : MonoBehaviour
             if (!isGrounded)
             {
                 isSpeedingUp = true;
-                moveSpeed = 8f;
+                //moveSpeed = 8f;
+                moveSpeed = 4f;
             }
             else
             {
