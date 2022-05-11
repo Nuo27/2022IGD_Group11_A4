@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     public static bool isLevel2ObjectiveComplete;
     public static bool isLevel3ObjectiveComplete;
     public static bool isLevel4ObjectiveComplete;
-    public static bool isTestObjectiveComplete;
+    public static bool isTutorialObjectiveComplete;
     public static bool reloadLevel = false;
     // Start is called before the first frame update
     void Start()
@@ -49,9 +49,7 @@ public class LevelManager : MonoBehaviour
             case 4:
                 return isLevel4ObjectiveComplete;
             case 5:
-                return StartSceneManager.isTutorialDone;
-            case 6:
-                return isTestObjectiveComplete;
+                return isTutorialObjectiveComplete;
             default:
                 return false;
 
@@ -72,6 +70,7 @@ public class LevelManager : MonoBehaviour
                 isLevel4ObjectiveComplete = true;
                 break;
             case 5:
+                isTutorialObjectiveComplete = true;
                 StartSceneManager.isTutorialDone = true;
                 break;
         }
@@ -91,7 +90,7 @@ public class LevelManager : MonoBehaviour
                 isLevel4ObjectiveComplete = isAccomplished;
                 break;
             case 5:
-                StartSceneManager.isTutorialDone = isAccomplished;
+                isTutorialObjectiveComplete = isAccomplished;
                 break;
         }
     }
