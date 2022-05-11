@@ -26,5 +26,10 @@ public class PlayerCollision : MonoBehaviour
         if(collision.gameObject.tag == "OpenableDoor"){
             Door.isDoorOpen = true;
         }
+        if(collision.gameObject.tag == "Level1O1"){
+            collision.gameObject.SetActive(false);
+            PlayerMovement.canJump = true;
+            UIManager.isPassingMessage = true;
+        }
     }
 }

@@ -19,6 +19,9 @@ public class UIManager : MonoBehaviour
     public GameObject Pause;
     public GameObject Settings;
     public GameObject Exit;
+    public static bool isPassingMessage = false;
+    public GameObject MessagePassHolder;
+    public TMPro.TextMeshProUGUI MessagePass;
     
     void Start()
     {
@@ -60,6 +63,12 @@ public class UIManager : MonoBehaviour
             isGamePaused = true;
             ActivePauseMenu();
         }
+        if(isPassingMessage){
+            LeanTween.moveLocalX(MessagePassHolder, -2000, 3f).setEase(LeanTweenType.easeInOutSine);
+            MessagePass.text = "you can now jump!...";
+            isPassingMessage = false;
+            MessagePassHolder.transform.localPosition = new Vector3(0,0,0);
+        }
     }
 
     void Restartinglevel(){
@@ -86,7 +95,7 @@ public class UIManager : MonoBehaviour
     string SetObjectiveText(int CurrentLevelIndex){
         switch(CurrentLevelIndex){
             case 1:
-                return "Level 1 Objective text";
+                return "Get the jump force and ..";
             case 2:
                 return "Find the victim's body..";
             case 3:

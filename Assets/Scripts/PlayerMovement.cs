@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public static float playerPosY;
     public static bool isFreeze = false;
     public GameObject target;
+    public static bool canJump;
 
 
 
@@ -56,7 +57,8 @@ public class PlayerMovement : MonoBehaviour
         target.transform.Translate(Vector3.right * moveHorizontal * moveSpeed * Time.deltaTime, Space.Self);
         target.transform.Translate(Vector3.forward * moveVertical * moveSpeed * Time.deltaTime, Space.Self);
         //jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        //if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             rb.AddForce(new Vector3(0, 2.0f, 0) * jumpForce, ForceMode.Impulse);
         }
