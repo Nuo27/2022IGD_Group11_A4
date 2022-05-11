@@ -15,7 +15,7 @@ public class DoorTrigger : MonoBehaviour
             {
                 Debug.Log("Open door");
                 myDoor.Play("door_open", 0, 0.0f);
-                //gameObject.SetActive(false);
+                gameObject.SetActive(false);
             }   
         }
     }
