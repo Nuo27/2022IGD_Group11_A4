@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject Pause;
     public GameObject Settings;
+    public GameObject Exit;
     
     void Start()
     {
@@ -41,8 +42,10 @@ public class UIManager : MonoBehaviour
         if(LevelManager.checkCurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex())){
             Debug.Log("Level Objective Done");
             callOutMessage(); 
+            // StartCoroutine(FadeOutTransition());
             LevelManager.SetCurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex(), false);
             //Invoke("returnMain",3f);
+            
             Invoke("OnClickReturnMain",3f);
             
         }
@@ -67,6 +70,14 @@ public class UIManager : MonoBehaviour
         MessageHolder.SetActive(true);
         Invoke("killMessage", 2.0f);
     }
+    // IEnumerator FadeOutTransition(){
+    //     float ft = 0.0f;
+    //     while(ft < 1.0f){
+    //         ft += Time.deltaTime;
+    //         Exit.GetComponent<Image>().color.a = Mathf.Lerp(Exit.GetComponent<Image>().color.a, 255f, ft);
+    //     }
+    //     yield return null;
+    // }
 
     void killMessage(){
         //Destroy(MessageHolder);

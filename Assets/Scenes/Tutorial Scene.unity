@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &71623309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3808744651553293081, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+  m_PrefabInstance: {fileID: 1468735561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &95144301 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4638611266317311975, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
@@ -2585,6 +2590,10 @@ PrefabInstance:
       value: UIManger
       objectReference: {fileID: 0}
     - target: {fileID: 4075709308671140525, guid: d7aa5c3e3e7c16a43a356db7f6857a2e, type: 3}
+      propertyPath: Exit
+      value: 
+      objectReference: {fileID: 71623309}
+    - target: {fileID: 4075709308671140525, guid: d7aa5c3e3e7c16a43a356db7f6857a2e, type: 3}
       propertyPath: Pause
       value: 
       objectReference: {fileID: 2102977391}
@@ -2732,6 +2741,22 @@ PrefabInstance:
     - target: {fileID: 2804555847163563307, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601461257662457061, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601461257662457061, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_Color.b
+      value: 0.01886791
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601461257662457061, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_Color.g
+      value: 0.01886791
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601461257662457061, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_Color.r
+      value: 0.01886791
       objectReference: {fileID: 0}
     - target: {fileID: 6029149487523357125, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
