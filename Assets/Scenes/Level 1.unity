@@ -380,13 +380,25 @@ PrefabInstance:
       value: UIManger
       objectReference: {fileID: 0}
     - target: {fileID: 4075709308671140525, guid: d7aa5c3e3e7c16a43a356db7f6857a2e, type: 3}
+      propertyPath: Pause
+      value: 
+      objectReference: {fileID: 1033637879}
+    - target: {fileID: 4075709308671140525, guid: d7aa5c3e3e7c16a43a356db7f6857a2e, type: 3}
       propertyPath: minimap
       value: 
       objectReference: {fileID: 784032878}
     - target: {fileID: 4075709308671140525, guid: d7aa5c3e3e7c16a43a356db7f6857a2e, type: 3}
+      propertyPath: Settings
+      value: 
+      objectReference: {fileID: 1033637878}
+    - target: {fileID: 4075709308671140525, guid: d7aa5c3e3e7c16a43a356db7f6857a2e, type: 3}
       propertyPath: ResetText
       value: 
       objectReference: {fileID: 784032877}
+    - target: {fileID: 4075709308671140525, guid: d7aa5c3e3e7c16a43a356db7f6857a2e, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1033637880}
     - target: {fileID: 4075709308671140525, guid: d7aa5c3e3e7c16a43a356db7f6857a2e, type: 3}
       propertyPath: MessageHolder
       value: 
@@ -534,6 +546,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1033637878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4638611266317311975, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+  m_PrefabInstance: {fileID: 22299222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1033637879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2254950264359834980, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+  m_PrefabInstance: {fileID: 22299222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1033637880 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9034336649233545518, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+  m_PrefabInstance: {fileID: 22299222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1243103265
 PrefabInstance:
   m_ObjectHideFlags: 0
