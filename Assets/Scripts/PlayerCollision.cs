@@ -23,5 +23,8 @@ public class PlayerCollision : MonoBehaviour
             Destroy(collision.gameObject);
             LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());;
         }
+        if(collision.gameObject.tag == "OpenableDoor"){
+            Door.isDoorOpened = true;
+        }
     }
 }
