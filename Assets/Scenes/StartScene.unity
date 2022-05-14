@@ -4121,6 +4121,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: music
       objectReference: {fileID: 0}
+    - target: {fileID: 297160554493472504, guid: 8e1297c9d2c5a8b4aa5529373e35909c, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 297160554493472505, guid: 8e1297c9d2c5a8b4aa5529373e35909c, type: 3}
       propertyPath: m_RootOrder
       value: 6

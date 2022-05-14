@@ -18,6 +18,8 @@ public class PlayerCollision : MonoBehaviour
         if(collision.gameObject.tag == "OpenableDoor"){
             collision.gameObject.GetComponent<AudioSource>().Play();
             Door.isDoorOpen = true;
+            //change the tag to untagged to prevent the door from opening again
+            collision.gameObject.tag = "Untagged";
         }
         if(collision.gameObject.tag == "Level1O1"){
             ColSFX.clip = AchieveSFX;
