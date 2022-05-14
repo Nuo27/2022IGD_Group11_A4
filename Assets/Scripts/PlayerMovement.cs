@@ -23,6 +23,11 @@ public class PlayerMovement : MonoBehaviour
     public static bool canJump;
     public static bool canSprint;
 
+    public AudioSource jumpSound;
+
+
+    
+
 
 
     // Start is called before the first frame update
@@ -62,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         if (Input.GetKeyDown(KeyCode.Space) && canJump && isGrounded)
         {
+            jumpSound.Play();
             rb.AddForce(new Vector3(0, 2.0f, 0) * jumpForce, ForceMode.Impulse);
         }
         //SpeedUp holding shift need to be adjusted with air speed**
