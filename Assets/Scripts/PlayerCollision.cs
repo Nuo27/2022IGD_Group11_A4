@@ -21,7 +21,7 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.tag == "Collectable")
         {
             Destroy(collision.gameObject);
-            LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());;
+            LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
         }
         if(collision.gameObject.tag == "OpenableDoor"){
             Door.isDoorOpen = true;
@@ -29,7 +29,15 @@ public class PlayerCollision : MonoBehaviour
         if(collision.gameObject.tag == "Level1O1"){
             collision.gameObject.SetActive(false);
             PlayerMovement.canJump = true;
+            UIManager.MessageText = "You got the jump force, go find the jump floor";
             UIManager.isPassingMessage = true;
+        }
+        if(collision.gameObject.tag == "Level1O2"){
+            collision.gameObject.SetActive(false);
+            SceneTransition.LoadLevel = true;
+            // UIManager.MessageText = "Ah..Why I am so dizzy...";
+            // UIManager.isPassingMessage = true;
+            LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
         }
     }
 }

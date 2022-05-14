@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public static bool isFreeze = false;
     public GameObject target;
     public static bool canJump;
+    public static bool canSprint;
 
 
 
@@ -28,10 +29,11 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        jumpForce = 4f;
-        mouseSensitivity = 4f;
+        jumpForce = 5f;
+        mouseSensitivity = 3f;
         moveSpeed = 4f;
         isFreeze = false;
+        canSprint = false;
     }
 
     // Update is called once per frame
@@ -58,12 +60,12 @@ public class PlayerMovement : MonoBehaviour
         target.transform.Translate(Vector3.forward * moveVertical * moveSpeed * Time.deltaTime, Space.Self);
         //jump
         //if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space) && canJump && isGrounded)
         {
             rb.AddForce(new Vector3(0, 2.0f, 0) * jumpForce, ForceMode.Impulse);
         }
         //SpeedUp holding shift need to be adjusted with air speed**
-        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded && canSprint)
         {
             isSpeedingUp = true;
             moveSpeed = 8f;
@@ -83,6 +85,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    // void OnCollisionEnter(Collision collision)
+    // {
+    //     //reset rb
+    //         rb.velocity = Vector3.zero;
+    //         rb.mass = 1.5f;
+    // }
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "ground")

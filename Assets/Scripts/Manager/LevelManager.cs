@@ -28,8 +28,9 @@ public class LevelManager : MonoBehaviour
             }
         }
         if(reloadLevel){
-            reloadLevel = false;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            reloadLevel = false;
+            
         }
     }
     //get current level index
