@@ -5,16 +5,8 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public AudioSource ColSFX;
+    public AudioClip AchieveSFX;
     //if the player collides with the flower, the player collects the flower
     private void OnCollisionEnter(Collision collision)
     {
@@ -24,9 +16,12 @@ public class PlayerCollision : MonoBehaviour
             LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
         }
         if(collision.gameObject.tag == "OpenableDoor"){
+            collision.gameObject.GetComponent<AudioSource>().Play();
             Door.isDoorOpen = true;
         }
         if(collision.gameObject.tag == "Level1O1"){
+            ColSFX.clip = AchieveSFX;
+            ColSFX.Play();
             collision.gameObject.SetActive(false);
             PlayerMovement.canJump = true;
             UIManager.MessageText = "You got the jump force, go find the jump floor";
