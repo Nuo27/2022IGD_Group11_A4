@@ -116,7 +116,7 @@ public class UIManager : MonoBehaviour
             case 1:
                 return "Get the jump force and ..";
             case 2:
-                return "Find out what happened here(Get info by touching books or scratchs)";
+                return "Find out what happened here(Get info by touching books)";
             case 3:
                 return "Level 3 Objective text";
             case 4:
