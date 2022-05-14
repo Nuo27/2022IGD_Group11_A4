@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     
     void Start()
     {
+        
         //if restarting level, reset everthing
         AccomplishedObjectiveText.text = SetAccomplishedObjectiveText(LevelManager.GetCurrentLevelIndex());
         ObjectiveText.text = SetObjectiveText(LevelManager.GetCurrentLevelIndex());
@@ -60,8 +61,9 @@ public class UIManager : MonoBehaviour
         else{
             ResetText.text = "";
         }
-        if(!isGamePaused && Input.GetKeyDown(KeyCode.R)){
+        if(!isGamePaused && Input.GetKeyDown(KeyCode.P)){
             isGamePaused = true;
+            Cursor.lockState = CursorLockMode.None;
             ActivePauseMenu();
         }
         if(isPassingMessage){
@@ -180,12 +182,15 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
     void ActivePauseMenu(){
+        
         pauseMenu.SetActive(true);
         LeanTween.moveLocalX(Pause, 0, 1f);
         PlayerMovement.isFreeze = true;
         Cursor.lockState = CursorLockMode.None;
+        print("Now Pause");
     }
     public void OnClickResume(){
+        
         pauseMenu.SetActive(false);
         LeanTween.moveLocalX(Pause, -1300, 1f);
         isGamePaused = false;

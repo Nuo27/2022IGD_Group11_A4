@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public static bool canSprint;
 
     public AudioSource jumpSound;
-
+    private float changedSensitivity;
 
     
 
@@ -44,9 +44,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(!isFreeze){
             PlayerControls();
         }
+    }
+    public void ApplyMouseSensitivity(float value)
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().mouseSensitivity = value;
     }
     void PlayerControls(){
         //get player pos y

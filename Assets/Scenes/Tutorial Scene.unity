@@ -2646,6 +2646,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 404494085663537283, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404494085663537283, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 404494085663537283, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 733141952134625834, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 733141952134625834, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1756467924397799314, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2742,6 +2762,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3346762773402267916, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3346762773402267916, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3346762773402267916, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3601461257662457061, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -2762,6 +2794,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 281607955}
+    - target: {fileID: 7047243908749032675, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7047243908749032675, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7616797595803518468, guid: 131a9efe7d913b64b8f03a647fe04059, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

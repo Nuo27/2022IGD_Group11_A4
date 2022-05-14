@@ -44,6 +44,7 @@ public class PlayerCollision : MonoBehaviour
         }
         if(collision.gameObject.tag == "Level2O1"){
             collision.gameObject.SetActive(false);
+            
             SceneTransition.LoadLevel = true;
             // UIManager.MessageText = "Ah..Why I am so dizzy...";
             // UIManager.isPassingMessage = true;

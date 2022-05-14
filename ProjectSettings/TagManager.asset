@@ -10,6 +10,8 @@ TagManager:
   - Level1O1
   - Level1O2
   - Level2O1
+  - music
+  - LevelTransition
   layers:
   - Default
   - TransparentFX

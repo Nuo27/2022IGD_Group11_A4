@@ -14,6 +14,14 @@ public class AudioManager : MonoBehaviour
     public static bool playJumpSFX;
     private void Awake() {
         //dont destroy on load
+
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("music");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
         DontDestroyOnLoad(this.gameObject);
     }
     // Start is called before the first frame update
