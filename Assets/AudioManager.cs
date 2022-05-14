@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip JumpSFX;
 
     public AudioSource audioSource;
+    public AudioMixer masterMixer;
     public static bool playJumpSFX;
     private void Awake() {
         //dont destroy on load
@@ -25,6 +27,10 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+    public void ApplyMasterVolume(float volume)
+    {
+        masterMixer.SetFloat("MasterVolume", volume);
     }
 
 
