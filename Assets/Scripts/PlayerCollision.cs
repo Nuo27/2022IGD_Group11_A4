@@ -32,6 +32,9 @@ public class PlayerCollision : MonoBehaviour
             UIManager.MessageText = "You got the jump force, go find the jump floor";
             UIManager.isPassingMessage = true;
         }
+        
+    }
+    void OnTriggerEnter(Collider collision){
         if(collision.gameObject.tag == "Level1O2"){
             collision.gameObject.SetActive(false);
             SceneTransition.LoadLevel = true;
@@ -39,5 +42,13 @@ public class PlayerCollision : MonoBehaviour
             // UIManager.isPassingMessage = true;
             LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
         }
+        if(collision.gameObject.tag == "Level2O1"){
+            collision.gameObject.SetActive(false);
+            SceneTransition.LoadLevel = true;
+            // UIManager.MessageText = "Ah..Why I am so dizzy...";
+            // UIManager.isPassingMessage = true;
+            LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
+        }
+
     }
 }

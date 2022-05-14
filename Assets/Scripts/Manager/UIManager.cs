@@ -74,17 +74,16 @@ public class UIManager : MonoBehaviour
     void returnMessage(){
         LeanTween.moveLocalX(MessagePassHolder, 0, 1f).setEase(LeanTweenType.easeInOutSine);
     }
-    void NextLevelTrans(){
-        SceneTransition.LoadLevel=false;
-    }
+
     void LoadNextLevel(){
         if(SceneManager.GetActiveScene().buildIndex == 5){
+            SceneTransition.LoadLevel=false;
             OnClickReturnMain();
             Invoke("NextLevelTrans",1.5f);
 
         }
         else{SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Invoke("NextLevelTrans",1.5f);}
+        SceneTransition.LoadLevel=false;}
         
     }
 

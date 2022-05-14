@@ -10,7 +10,7 @@ public class SceneTransition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject.transform.parent.gameObject.transform.parent.gameObject);
     }
 
     // Update is called once per frame

@@ -9,6 +9,7 @@ TagManager:
   - OpenableDoor
   - Level1O1
   - Level1O2
+  - Level2O1
   layers:
   - Default
   - TransparentFX
