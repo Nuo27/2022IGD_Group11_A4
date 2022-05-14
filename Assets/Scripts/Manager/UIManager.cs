@@ -18,10 +18,6 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject Pause;
     public GameObject Settings;
-    public GameObject Exit;
-    public static bool isPassingMessage = false;
-    public GameObject MessagePassHolder;
-    public TMPro.TextMeshProUGUI MessagePass;
     
     void Start()
     {
@@ -45,10 +41,8 @@ public class UIManager : MonoBehaviour
         if(LevelManager.checkCurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex())){
             Debug.Log("Level Objective Done");
             callOutMessage(); 
-            // StartCoroutine(FadeOutTransition());
             LevelManager.SetCurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex(), false);
             //Invoke("returnMain",3f);
-            
             Invoke("OnClickReturnMain",3f);
             
         }
@@ -63,12 +57,6 @@ public class UIManager : MonoBehaviour
             isGamePaused = true;
             ActivePauseMenu();
         }
-        if(isPassingMessage){
-            LeanTween.moveLocalX(MessagePassHolder, -2000, 3f).setEase(LeanTweenType.easeInOutSine);
-            MessagePass.text = "you can now jump!...";
-            isPassingMessage = false;
-            MessagePassHolder.transform.localPosition = new Vector3(0,0,0);
-        }
     }
 
     void Restartinglevel(){
@@ -79,14 +67,6 @@ public class UIManager : MonoBehaviour
         MessageHolder.SetActive(true);
         Invoke("killMessage", 2.0f);
     }
-    // IEnumerator FadeOutTransition(){
-    //     float ft = 0.0f;
-    //     while(ft < 1.0f){
-    //         ft += Time.deltaTime;
-    //         Exit.GetComponent<Image>().color.a = Mathf.Lerp(Exit.GetComponent<Image>().color.a, 255f, ft);
-    //     }
-    //     yield return null;
-    // }
 
     void killMessage(){
         //Destroy(MessageHolder);
@@ -95,9 +75,9 @@ public class UIManager : MonoBehaviour
     string SetObjectiveText(int CurrentLevelIndex){
         switch(CurrentLevelIndex){
             case 1:
-                return "Get the jump force and ..";
+                return "Level 1 Objective text";
             case 2:
-                return "Find the victim's body..";
+                return "Level 2 Objective text";
             case 3:
                 return "Level 3 Objective text";
             case 4:
@@ -111,15 +91,15 @@ public class UIManager : MonoBehaviour
     string SetCurrentLevelText(int CurrentLevelIndex){
         switch(CurrentLevelIndex){
             case 1:
-                return "Day 1";
+                return "Level 1";
             case 2:
-                return "Day 2";
+                return "Level 2";
             case 3:
-                return "Day 3";
+                return "Level 3";
             case 4:
-                return "Day 4";
+                return "Level 4";
             case 5:
-                return "Tutorial";
+                return "Level Tutorial";
             default:
                 return "";
         }
@@ -127,15 +107,15 @@ public class UIManager : MonoBehaviour
     string SetAccomplishedObjectiveText(int CurrentLevelIndex){
         switch(CurrentLevelIndex){
             case 1:
-                return "You passed out after feeling dizzy.." + " Return to Main in 3 sec...";
+                return "Level 1 Accomplished Objective text" + "Return to Main in 3 sec...";
             case 2:
-                return "You passed out after feeling dizzy.." + " Return to Main in 3 sec...";
+                return "Level 2 Accomplished Objective text" + "Return to Main in 3 sec...";
             case 3:
-                return "Level 3 Accomplished Objective text" + " Return to Main in 3 sec...";
+                return "Level 3 Accomplished Objective text" + "Return to Main in 3 sec...";
             case 4:
-                return "Level 4 Accomplished Objective text" + " Return to Main in 3 sec...";
+                return "Level 4 Accomplished Objective text" + "Return to Main in 3 sec...";
             case 5:
-                return "Level Tutorial Objective Accomplished" + " Return to Main in 3 sec...";
+                return "Level Tutorial Objective Accomplished" + "Return to Main in 3 sec...";
             default:
                 return "";
         }

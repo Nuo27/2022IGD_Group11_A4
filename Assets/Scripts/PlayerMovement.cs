@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float mouseSensitivity;
     public static float moveSpeed;
-    public float moveMultiplier = 1.5f;
     private float moveHorizontal;
     private float moveVertical;
     private float moveX;
@@ -20,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     public static float playerPosY;
     public static bool isFreeze = false;
     public GameObject target;
-    public static bool canJump;
 
 
 
@@ -57,12 +55,12 @@ public class PlayerMovement : MonoBehaviour
         target.transform.Translate(Vector3.right * moveHorizontal * moveSpeed * Time.deltaTime, Space.Self);
         target.transform.Translate(Vector3.forward * moveVertical * moveSpeed * Time.deltaTime, Space.Self);
         //jump
-        //if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(new Vector3(0, 2.0f, 0) * jumpForce, ForceMode.Impulse);
         }
         //SpeedUp holding shift need to be adjusted with air speed**
+
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
             isSpeedingUp = true;
@@ -73,8 +71,7 @@ public class PlayerMovement : MonoBehaviour
             if (!isGrounded)
             {
                 isSpeedingUp = true;
-                //moveSpeed = 8f;
-                moveSpeed = 4f;
+                moveSpeed = 8f;
             }
             else
             {

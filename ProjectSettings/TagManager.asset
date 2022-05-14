@@ -6,9 +6,6 @@ TagManager:
   tags:
   - ground
   - Collectable
-  - OpenableDoor
-  - Level1O1
-  - Level1O2
   layers:
   - Default
   - TransparentFX
