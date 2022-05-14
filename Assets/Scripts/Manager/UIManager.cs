@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     public static bool isPassingMessage = false;
     public GameObject MessagePassHolder;
     public TMPro.TextMeshProUGUI MessagePass;
+    public static string MessageText = "";
     
     void Start()
     {
@@ -48,8 +49,8 @@ public class UIManager : MonoBehaviour
             // StartCoroutine(FadeOutTransition());
             LevelManager.SetCurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex(), false);
             //Invoke("returnMain",3f);
-            
-            Invoke("OnClickReturnMain",3f);
+
+            Invoke("LoadNextLevel",3f);
             
         }
         if(PlayerMovement.playerPosY < -10){
@@ -64,12 +65,29 @@ public class UIManager : MonoBehaviour
             ActivePauseMenu();
         }
         if(isPassingMessage){
-            LeanTween.moveLocalX(MessagePassHolder, -2000, 3f).setEase(LeanTweenType.easeInOutSine);
-            MessagePass.text = "you can now jump!...";
+            LeanTween.moveLocalX(MessagePassHolder, -400, 1f).setEase(LeanTweenType.easeInOutSine);
+            MessagePass.text = MessageText;
             isPassingMessage = false;
-            MessagePassHolder.transform.localPosition = new Vector3(0,0,0);
+            Invoke("returnMessage",5f);
         }
     }
+    void returnMessage(){
+        LeanTween.moveLocalX(MessagePassHolder, 0, 1f).setEase(LeanTweenType.easeInOutSine);
+    }
+    void NextLevelTrans(){
+        SceneTransition.LoadLevel=false;
+    }
+    void LoadNextLevel(){
+        if(SceneManager.GetActiveScene().buildIndex == 5){
+            OnClickReturnMain();
+            Invoke("NextLevelTrans",1.5f);
+
+        }
+        else{SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Invoke("NextLevelTrans",1.5f);}
+        
+    }
+
 
     void Restartinglevel(){
         LevelManager.reloadLevel = true;
