@@ -59,8 +59,10 @@ public class PlayerMovement : MonoBehaviour
         //movement inputs
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
-        moveX = Input.GetAxis("Mouse X");
-        moveY = Input.GetAxis("Mouse Y");
+        if(PromptManager.enableMouseInput){
+            getMouseInput();
+        }
+        
         rotationY -= moveY * mouseSensitivity;
         rotationY = Mathf.Clamp(rotationY, -90f, 90f);
         //movement
@@ -94,6 +96,10 @@ public class PlayerMovement : MonoBehaviour
                 isSpeedingUp = false;
                 moveSpeed = 4f;
             }
+        }
+        void getMouseInput(){
+            moveX = Input.GetAxis("Mouse X");
+            moveY = Input.GetAxis("Mouse Y");
         }
     }
     // void OnCollisionEnter(Collision collision)
