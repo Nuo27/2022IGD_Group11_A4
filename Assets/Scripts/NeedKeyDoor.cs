@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NeedKeyDoor : MonoBehaviour
+public class NeedKeyDoor : MonoBehaviour 
 {
     [SerializeField]
     private Key.KeyType needTpye;

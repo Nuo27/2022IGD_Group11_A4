@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
         {
             if(hit.collider.tag == "Thing")
             {
-                //Debug.Log(hit.collider.name);
                 Show();
                 nowThing = hit.collider.GetComponent<Thing>();
                 if (Input.GetKeyDown(KeyCode.E))
