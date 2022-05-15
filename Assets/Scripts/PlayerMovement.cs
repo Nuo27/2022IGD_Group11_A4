@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce;
     public float mouseSensitivity;
     public static float moveSpeed;
+    public float moveMultiplier = 1.5f;
     private float moveHorizontal;
     private float moveVertical;
     private float moveX;
@@ -19,6 +20,13 @@ public class PlayerMovement : MonoBehaviour
     public static float playerPosY;
     public static bool isFreeze = false;
     public GameObject target;
+    public static bool canJump;
+    public static bool canSprint;
+
+    public AudioSource jumpSound;
+    private float changedSensitivity;
+
+    
 
 
 
@@ -26,18 +34,24 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        jumpForce = 4f;
-        mouseSensitivity = 4f;
+        jumpForce = 5f;
+        mouseSensitivity = 3f;
         moveSpeed = 4f;
         isFreeze = false;
+        canSprint = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if(!isFreeze){
             PlayerControls();
         }
+    }
+    public void ApplyMouseSensitivity(float value)
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().mouseSensitivity = value;
     }
     void PlayerControls(){
         //get player pos y
@@ -45,8 +59,10 @@ public class PlayerMovement : MonoBehaviour
         //movement inputs
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
-        moveX = Input.GetAxis("Mouse X");
-        moveY = Input.GetAxis("Mouse Y");
+        if(PromptManager.enableMouseInput){
+            getMouseInput();
+        }
+        
         rotationY -= moveY * mouseSensitivity;
         rotationY = Mathf.Clamp(rotationY, -90f, 90f);
         //movement
@@ -55,13 +71,14 @@ public class PlayerMovement : MonoBehaviour
         target.transform.Translate(Vector3.right * moveHorizontal * moveSpeed * Time.deltaTime, Space.Self);
         target.transform.Translate(Vector3.forward * moveVertical * moveSpeed * Time.deltaTime, Space.Self);
         //jump
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        //if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && canJump && isGrounded)
         {
+            jumpSound.Play();
             rb.AddForce(new Vector3(0, 2.0f, 0) * jumpForce, ForceMode.Impulse);
         }
         //SpeedUp holding shift need to be adjusted with air speed**
-
-        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded && canSprint)
         {
             isSpeedingUp = true;
             moveSpeed = 8f;
@@ -71,7 +88,8 @@ public class PlayerMovement : MonoBehaviour
             if (!isGrounded)
             {
                 isSpeedingUp = true;
-                moveSpeed = 8f;
+                //moveSpeed = 8f;
+                moveSpeed = 4f;
             }
             else
             {
@@ -79,7 +97,17 @@ public class PlayerMovement : MonoBehaviour
                 moveSpeed = 4f;
             }
         }
+        void getMouseInput(){
+            moveX = Input.GetAxis("Mouse X");
+            moveY = Input.GetAxis("Mouse Y");
+        }
     }
+    // void OnCollisionEnter(Collision collision)
+    // {
+    //     //reset rb
+    //         rb.velocity = Vector3.zero;
+    //         rb.mass = 1.5f;
+    // }
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.tag == "ground")

@@ -18,9 +18,15 @@ public class UIManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject Pause;
     public GameObject Settings;
+    public GameObject Exit;
+    public static bool isPassingMessage = false;
+    public GameObject MessagePassHolder;
+    public TMPro.TextMeshProUGUI MessagePass;
+    public static string MessageText = "";
     
     void Start()
     {
+        
         //if restarting level, reset everthing
         AccomplishedObjectiveText.text = SetAccomplishedObjectiveText(LevelManager.GetCurrentLevelIndex());
         ObjectiveText.text = SetObjectiveText(LevelManager.GetCurrentLevelIndex());
@@ -41,9 +47,11 @@ public class UIManager : MonoBehaviour
         if(LevelManager.checkCurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex())){
             Debug.Log("Level Objective Done");
             callOutMessage(); 
+            // StartCoroutine(FadeOutTransition());
             LevelManager.SetCurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex(), false);
             //Invoke("returnMain",3f);
-            Invoke("OnClickReturnMain",3f);
+
+            Invoke("LoadNextLevel",3f);
             
         }
         if(PlayerMovement.playerPosY < -10){
@@ -53,11 +61,34 @@ public class UIManager : MonoBehaviour
         else{
             ResetText.text = "";
         }
-        if(!isGamePaused && Input.GetKeyDown(KeyCode.R)){
+        if(!isGamePaused && Input.GetKeyDown(KeyCode.P)){
             isGamePaused = true;
+            Cursor.lockState = CursorLockMode.None;
             ActivePauseMenu();
         }
+        if(isPassingMessage){
+            LeanTween.moveLocalX(MessagePassHolder, -400, 1f).setEase(LeanTweenType.easeInOutSine);
+            MessagePass.text = MessageText;
+            isPassingMessage = false;
+            Invoke("returnMessage",5f);
+        }
     }
+    void returnMessage(){
+        LeanTween.moveLocalX(MessagePassHolder, 0, 1f).setEase(LeanTweenType.easeInOutSine);
+    }
+
+    void LoadNextLevel(){
+        if(SceneManager.GetActiveScene().buildIndex == 5){
+            SceneTransition.LoadLevel=false;
+            OnClickReturnMain();
+            Invoke("NextLevelTrans",1.5f);
+
+        }
+        else{SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneTransition.LoadLevel=false;}
+        
+    }
+
 
     void Restartinglevel(){
         LevelManager.reloadLevel = true;
@@ -67,6 +98,14 @@ public class UIManager : MonoBehaviour
         MessageHolder.SetActive(true);
         Invoke("killMessage", 2.0f);
     }
+    // IEnumerator FadeOutTransition(){
+    //     float ft = 0.0f;
+    //     while(ft < 1.0f){
+    //         ft += Time.deltaTime;
+    //         Exit.GetComponent<Image>().color.a = Mathf.Lerp(Exit.GetComponent<Image>().color.a, 255f, ft);
+    //     }
+    //     yield return null;
+    // }
 
     void killMessage(){
         //Destroy(MessageHolder);
@@ -75,9 +114,9 @@ public class UIManager : MonoBehaviour
     string SetObjectiveText(int CurrentLevelIndex){
         switch(CurrentLevelIndex){
             case 1:
-                return "Level 1 Objective text";
+                return "Get the jump force and ..";
             case 2:
-                return "Level 2 Objective text";
+                return "Find out what happened here(Get info by touching books)";
             case 3:
                 return "Level 3 Objective text";
             case 4:
@@ -91,15 +130,15 @@ public class UIManager : MonoBehaviour
     string SetCurrentLevelText(int CurrentLevelIndex){
         switch(CurrentLevelIndex){
             case 1:
-                return "Level 1";
+                return "Day 1";
             case 2:
-                return "Level 2";
+                return "Day 2";
             case 3:
-                return "Level 3";
+                return "Day 3";
             case 4:
-                return "Level 4";
+                return "Day 4";
             case 5:
-                return "Level Tutorial";
+                return "Tutorial";
             default:
                 return "";
         }
@@ -107,15 +146,15 @@ public class UIManager : MonoBehaviour
     string SetAccomplishedObjectiveText(int CurrentLevelIndex){
         switch(CurrentLevelIndex){
             case 1:
-                return "Level 1 Accomplished Objective text" + "Return to Main in 3 sec...";
+                return "You passed out after feeling dizzy.." + " Return to Main in 3 sec...";
             case 2:
-                return "Level 2 Accomplished Objective text" + "Return to Main in 3 sec...";
+                return "You passed out after feeling dizzy.." + " Return to Main in 3 sec...";
             case 3:
-                return "Level 3 Accomplished Objective text" + "Return to Main in 3 sec...";
+                return "Level 3 Accomplished Objective text" + " Return to Main in 3 sec...";
             case 4:
-                return "Level 4 Accomplished Objective text" + "Return to Main in 3 sec...";
+                return "Level 4 Accomplished Objective text" + " Return to Main in 3 sec...";
             case 5:
-                return "Level Tutorial Objective Accomplished" + "Return to Main in 3 sec...";
+                return "Level Tutorial Objective Accomplished" + " Return to Main in 3 sec...";
             default:
                 return "";
         }
@@ -143,12 +182,15 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
     void ActivePauseMenu(){
+        
         pauseMenu.SetActive(true);
         LeanTween.moveLocalX(Pause, 0, 1f);
         PlayerMovement.isFreeze = true;
         Cursor.lockState = CursorLockMode.None;
+        print("Now Pause");
     }
     public void OnClickResume(){
+        
         pauseMenu.SetActive(false);
         LeanTween.moveLocalX(Pause, -1300, 1f);
         isGamePaused = false;
