@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 public class DoorTrigger : MonoBehaviour
 {
-    [SerializeField] private Animator myDoor = null;
+    [SerializeField] private Animator myDoor;
     public AudioSource door_audio;
     private bool door_triggered;
     private void OnTriggerEnter(Collider other)
