@@ -56,3 +56,6 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   Pause: {fileID: 0}
   Settings: {fileID: 0}
+  Exit: {fileID: 0}
+  MessagePassHolder: {fileID: 0}
+  MessagePass: {fileID: 0}
