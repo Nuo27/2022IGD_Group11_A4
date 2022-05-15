@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NeedKeyDoor : MonoBehaviour 
+public class NeedKeyDoor : MonoBehaviour
 {
     [SerializeField]
     private Key.KeyType needTpye;
@@ -24,9 +24,9 @@ public class NeedKeyDoor : MonoBehaviour
         else
         {
             Player.singleton.keys[(int)needTpye] = 0;
-            gameObject.tag = "Thing";
+             gameObject.AddComponent<Thing>();
             gameObject.AddComponent<Door>();
-            GetComponent<MessageProvider>().OnEDown("Successfully unlocked");
+            GetComponent<MessageProvider>().OnEDown("You escaped...Please Press E to return to main menu");
         }
     }
 }

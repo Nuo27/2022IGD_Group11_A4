@@ -22,9 +22,15 @@ public class Drawer : Thing
     public override void OnEDown()
     {
         if (open)
+        {
+            audioSource.Play();
             gameObject.transform.Translate(-Vector3.forward * dis,Space.Self);
+        }
         else
+        {
+            audioSource.Play();
             gameObject.transform.Translate(Vector3.forward * dis, Space.Self);
+        }
         open = !open;
     }
 }
