@@ -61,7 +61,9 @@ public class PromptManager : MonoBehaviour
             float distance = Vector3.Distance(NewPos,GameObject.FindGameObjectWithTag("Player").transform.position);
             if(distance >= 6f){
                 setPromptText("Well Done!", "Well Done!", "Find and Touch the Red Flower");
-                OBJ.SetActive(true);
+                      if (OBJ!=null){
+                  OBJ.SetActive(true);
+                }     
             }
         }
 

@@ -63,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
             getMouseInput();
         }
         
+        
         rotationY -= moveY * mouseSensitivity;
         rotationY = Mathf.Clamp(rotationY, -90f, 90f);
         //movement
