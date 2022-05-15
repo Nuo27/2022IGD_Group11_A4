@@ -27,6 +27,7 @@ public class PromptManager : MonoBehaviour
         Invoke("showPromptBox", 1f);
         setPromptText("Move around with WASD", "Hide", "Hide");
         OBJ.SetActive(false);
+        enableMouseInput = false;
     }
 
     // Update is called once per frame

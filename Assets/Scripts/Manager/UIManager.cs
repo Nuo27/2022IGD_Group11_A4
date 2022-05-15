@@ -56,6 +56,7 @@ public class UIManager : MonoBehaviour
         }
         if(PlayerMovement.playerPosY < -10){
             ResetText.text = "You died...restarting level in 3 sec...";
+            PromptManager.enableMouseInput = false;
             Invoke("Restartinglevel", 3f);
         }
         else{
