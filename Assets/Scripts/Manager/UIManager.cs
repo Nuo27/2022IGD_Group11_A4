@@ -84,6 +84,11 @@ public class UIManager : MonoBehaviour
             Invoke("NextLevelTrans",1.5f);
 
         }
+        else if(SceneManager.GetActiveScene().buildIndex == 4){
+                SceneTransition.LoadLevel=false;
+                OnClickReturnMain();
+                Invoke("NextLevelTrans",1.5f);
+        }
         else{SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         SceneTransition.LoadLevel=false;}
         
