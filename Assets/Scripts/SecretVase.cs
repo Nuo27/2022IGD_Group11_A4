@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SecretVase : MonoBehaviour
 {
-
+    public static bool AchieveVase = false;
     public GameObject SecretDoor;
 
     private void OnCollisionEnter(Collision other) {
@@ -16,6 +16,7 @@ public class SecretVase : MonoBehaviour
             SecretDoor.transform.rotation = Quaternion.Euler(0, -230, 0);
             UIManager.MessageText = "You've Opened the secret door";
             UIManager.isPassingMessage = true;
+            AchieveVase = true;
         }
     }
 }

@@ -56,6 +56,7 @@ public class UIManager : MonoBehaviour
         }
         if(PlayerMovement.playerPosY < -10){
             ResetText.text = "You died...restarting level in 3 sec...";
+            PromptManager.enableMouseInput = false;
             Invoke("Restartinglevel", 3f);
         }
         else{
@@ -121,7 +122,7 @@ public class UIManager : MonoBehaviour
             case 1:
                 return "Get the jump force and ..";
             case 2:
-                return "Find out what happened here(Get info by touching books)";
+                return "Find out what happened here(Get info by touching books, reach doors to open them)";
             case 3:
                 return "Find the white books and palette knife then Finish painting";
             case 4:

@@ -12,6 +12,7 @@ TagManager:
   - Level2O1
   - music
   - LevelTransition
+  - LetsJump
   layers:
   - Default
   - TransparentFX

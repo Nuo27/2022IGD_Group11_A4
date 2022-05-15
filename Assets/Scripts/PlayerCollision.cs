@@ -9,6 +9,7 @@ public class PlayerCollision : MonoBehaviour
     public AudioClip AchieveSFX;
     public int color = -1;
     public int xcolor = 0;
+    private bool gotJump = false;
     //if the player collides with the flower, the player collects the flower
     private void OnCollisionEnter(Collision collision)
     {
@@ -28,6 +29,7 @@ public class PlayerCollision : MonoBehaviour
             ColSFX.Play();
             collision.gameObject.SetActive(false);
             PlayerMovement.canJump = true;
+            gotJump = true;
             UIManager.MessageText = "You got the jump force, go find the jump floor";
             UIManager.isPassingMessage = true;
         }
@@ -176,6 +178,8 @@ public class PlayerCollision : MonoBehaviour
             xcolor = 0;
         }
 
+        
+        
     }
     void OnTriggerEnter(Collider collision){
         if(collision.gameObject.tag == "Level1O2"){
@@ -192,6 +196,24 @@ public class PlayerCollision : MonoBehaviour
             // UIManager.MessageText = "Ah..Why I am so dizzy...";
             // UIManager.isPassingMessage = true;
             LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
+        }
+        if(collision.gameObject.tag == "LetsJump"){
+            if(SecretVase.AchieveVase){
+                if(gotJump){
+                    UIManager.MessageText = "Step on it and .. ready to jump!";
+                    UIManager.isPassingMessage = true;
+                }
+                else{
+                    UIManager.MessageText = "You need to get the jump force first";
+                    UIManager.isPassingMessage = true;
+                }    
+            }
+                
+            else{
+                print("You need to find the vase first");
+                UIManager.MessageText = "To enter this secret door, You need to find the vase first";
+                UIManager.isPassingMessage = true;
+            }
         }
 
     }

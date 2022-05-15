@@ -20,9 +20,9 @@ public class Diaries : MonoBehaviour
         
     }
     void OnTriggerExit(Collider other){
-        Invoke("setFalse", 2f);
+        Invoke("setFalse", 1f);
     }
-    void setFalse(){
+   void setFalse(){
         Diary.SetActive(false);
-    }
+    } 
 }
