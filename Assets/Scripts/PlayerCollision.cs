@@ -7,6 +7,8 @@ public class PlayerCollision : MonoBehaviour
     // Start is called before the first frame update
     public AudioSource ColSFX;
     public AudioClip AchieveSFX;
+    public int color = -1;
+    public int xcolor = 0;
     //if the player collides with the flower, the player collects the flower
     private void OnCollisionEnter(Collision collision)
     {
@@ -29,7 +31,151 @@ public class PlayerCollision : MonoBehaviour
             UIManager.MessageText = "You got the jump force, go find the jump floor";
             UIManager.isPassingMessage = true;
         }
-        
+        if (collision.gameObject.tag == "Level301")
+        {
+            UIManager.MessageText = "Red + blue = Violet.\nRed + Yellow = orange.\nRed + Green = Yellow.\nBlue + Green = Cyan.\nBlue + Yellow = Sliver.";
+            UIManager.isPassingMessage = true;
+        }
+        if (collision.gameObject.tag == "Level302")
+        {
+            UIManager.MessageText = "May Xth I bought two new curtains.\nOne is yellow and one is blue.\nJune Xth I took three pictures of the house.\nThe one on the left is my room.\nThe middle one is my studio.\nAnd(the rest of the pages were torn off.)";
+            UIManager.isPassingMessage = true;
+        }
+        if (collision.gameObject.tag == "Level303")
+        {
+            UIManager.MessageText = "You got a palette knife.\nThere is no color on the palette.\nBut you can pick color from the painting in the hallway.\nYou can only get one color at the same time.\nIf you use a wrong color,nothing will happened and the color will be used up.";
+            UIManager.isPassingMessage = true;
+            color += 1;
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "Level304")
+        {
+            if (color == 0)
+            {
+                UIManager.MessageText = "You got the Violet color.";
+                UIManager.isPassingMessage = true;
+                color = 1;
+            }
+            else
+            {
+                UIManager.MessageText = "";
+            }
+        }
+        if (collision.gameObject.tag == "Level305")
+        {
+            if (color == 0)
+            {
+                UIManager.MessageText = "You got the Orange color.";
+                UIManager.isPassingMessage = true;
+                color = 2;
+            }
+            else
+            {
+                UIManager.MessageText = "";
+            }
+        }
+        if (collision.gameObject.tag == "Level306")
+        {
+            if (color == 0)
+            {
+                UIManager.MessageText = "You got the Yellow color.";
+                UIManager.isPassingMessage = true;
+                color = 3;
+            }
+            else
+            {
+                UIManager.MessageText = "";
+            }
+        }
+        if (collision.gameObject.tag == "Level307")
+        {
+            if (color == 0)
+            {
+                UIManager.MessageText = "You got the Cyan.";
+                UIManager.isPassingMessage = true;
+                color = 4;
+            }
+            else
+            {
+                UIManager.MessageText = "";
+            }
+        }
+        if (collision.gameObject.tag == "Level308")
+        {
+            if (color == 0)
+            {
+                UIManager.MessageText = "You got the Sliver color.";
+                UIManager.isPassingMessage = true;
+                color = 5;
+            }
+            else
+            {
+                UIManager.MessageText = "";
+            }
+        }
+        if (collision.gameObject.tag == "Level310")
+        {
+            if (color == 5)
+            {
+                UIManager.MessageText = "You paint it siliver.\nAnd it disappered.";
+                UIManager.isPassingMessage = true;
+                color = 0;
+                xcolor += 1;
+                Destroy(collision.gameObject);
+            }
+            if (color == -1)
+            {
+                UIManager.MessageText = "";
+            }
+            else
+            {
+                color = 0;
+            }
+        }
+        if (collision.gameObject.tag == "Level311")
+        {
+            if (color == 4)
+            {
+                UIManager.MessageText = "You paint it Cyan.\nAnd it disappered.";
+                UIManager.isPassingMessage = true;
+                color = 0;
+                xcolor += 1;
+                Destroy(collision.gameObject);
+            }
+            if (color == -1)
+            {
+                UIManager.MessageText = "";
+            }
+            else
+            {
+                color = 0;
+            }
+        }
+        if (collision.gameObject.tag == "Level312")
+        {
+            if (color == 1)
+            {
+                UIManager.MessageText = "You paint it Violet.\nAnd it disappered.";
+                UIManager.isPassingMessage = true;
+                color = 0;
+                xcolor += 1;
+                Destroy(collision.gameObject);
+            }
+            if (color == -1)
+            {
+                UIManager.MessageText = "";
+            }
+            else
+            {
+                color = 0;
+            }
+        }
+        if (xcolor == 3)
+        {
+            LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
+            xcolor = 0;
+        }
+
     }
     void OnTriggerEnter(Collider collision){
         if(collision.gameObject.tag == "Level1O2"){

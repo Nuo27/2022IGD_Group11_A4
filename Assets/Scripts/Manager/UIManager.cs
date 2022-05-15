@@ -118,7 +118,7 @@ public class UIManager : MonoBehaviour
             case 2:
                 return "Find out what happened here(Get info by touching books)";
             case 3:
-                return "Level 3 Objective text";
+                return "Find the white books and palette knife then Finish painting";
             case 4:
                 return "Find the keys, escape from this house";
             case 5:
@@ -150,7 +150,7 @@ public class UIManager : MonoBehaviour
             case 2:
                 return "You passed out after feeling dizzy.." + " Return to Main in 3 sec...";
             case 3:
-                return "Level 3 Accomplished Objective text" + " Return to Main in 3 sec...";
+                return "You feel like everything is confused and you wake up.." + " Return to Main in 3 sec...";
             case 4:
                 return "Level 4 Accomplished Objective text" + " Return to Main in 3 sec...";
             case 5:
