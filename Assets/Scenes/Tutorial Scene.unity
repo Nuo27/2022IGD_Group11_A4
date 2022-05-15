@@ -4121,6 +4121,14 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4423074935969410071, guid: 1046f1edfb2b164448d4c33a54bfde9b, type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4423074935969410071, guid: 1046f1edfb2b164448d4c33a54bfde9b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 30c62968feab98243aae69ce67e984dc, type: 2}
     - target: {fileID: 7465125761609654027, guid: 1046f1edfb2b164448d4c33a54bfde9b, type: 3}
       propertyPath: m_RootOrder
       value: 0

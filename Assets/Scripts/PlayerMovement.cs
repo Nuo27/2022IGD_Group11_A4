@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     public AudioSource jumpSound;
     private float changedSensitivity;
-
+    public AudioSource footstep;
     
 
 
@@ -48,6 +48,15 @@ public class PlayerMovement : MonoBehaviour
         if(!isFreeze){
             PlayerControls();
         }
+        if(Input.GetAxis("Horizontal")!= 0 || Input.GetAxis("Vertical")!=0){
+            if(!footstep.isPlaying){
+                footstep.Play();
+            }            
+        }
+        else{
+            footstep.Stop();
+        }
+        
     }
     public void ApplyMouseSensitivity(float value)
     {
@@ -62,7 +71,6 @@ public class PlayerMovement : MonoBehaviour
         if(PromptManager.enableMouseInput){
             getMouseInput();
         }
-        
         
         rotationY -= moveY * mouseSensitivity;
         rotationY = Mathf.Clamp(rotationY, -90f, 90f);
