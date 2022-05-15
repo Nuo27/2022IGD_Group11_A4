@@ -157,7 +157,7 @@ public class UIManager : MonoBehaviour
             case 3:
                 return "Level 3 Accomplished Objective text" + " Return to Main in 3 sec...";
             case 4:
-                return "Level 4 Accomplished Objective text" + " Return to Main in 3 sec...";
+                return "You escaped..."+ " Return to Main in 3 sec...";
             case 5:
                 return "Level Tutorial Objective Accomplished" + " Return to Main in 3 sec...";
             default:

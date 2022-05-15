@@ -24,10 +24,11 @@ public class NeedKeyDoor : MonoBehaviour
         else
         {
             Player.singleton.keys[(int)needTpye] = 0;
-             gameObject.AddComponent<Thing>();
+            gameObject.AddComponent<Thing>();
             gameObject.AddComponent<Door>();
             LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
-            GetComponent<MessageProvider>().OnEDown("You escaped...Please Press E to return to main menu");
+            
+            //GetComponent<MessageProvider>().OnEDown("You escaped...Please Press E to return to main menu");
         }
     }
 }
