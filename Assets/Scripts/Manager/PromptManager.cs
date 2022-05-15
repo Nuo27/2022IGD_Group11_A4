@@ -19,6 +19,8 @@ public class PromptManager : MonoBehaviour
     private bool d;
     private Vector3 NewPos;
     private bool temp = true;
+    private bool temp2 = true;
+    private float distance;
 
 
     // Start is called before the first frame update
@@ -27,7 +29,6 @@ public class PromptManager : MonoBehaviour
         Invoke("showPromptBox", 1f);
         setPromptText("Move around with WASD", "Hide", "Hide");
         OBJ.SetActive(false);
-        enableMouseInput = false;
     }
 
     // Update is called once per frame
@@ -59,11 +60,14 @@ public class PromptManager : MonoBehaviour
             }
             enableMouseInput = true;
             setPromptText("Well Done!", "Move with the mouse", "Hide");
-            float distance = Vector3.Distance(NewPos,GameObject.FindGameObjectWithTag("Player").transform.position);
+            if(temp2){
+                distance = Vector3.Distance(NewPos,GameObject.FindGameObjectWithTag("Player").transform.position);
+            } 
             if(distance >= 6f){
+                temp2 = false;
                 setPromptText("Well Done!", "Well Done!", "Find and Touch the Red Flower");
-                      if (OBJ!=null){
-                  OBJ.SetActive(true);
+                if (OBJ!=null){
+                    OBJ.SetActive(true);
                 }     
             }
         }
