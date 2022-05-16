@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerCollision : MonoBehaviour
     public AudioClip AchieveSFX;
     public int color = -1;
     public int xcolor = 0;
+    public Image Color;
+    public GameObject ColorHolder;
     private bool gotJump = false;
     //if the player collides with the flower, the player collects the flower
     private void OnCollisionEnter(Collision collision)
@@ -49,6 +52,8 @@ public class PlayerCollision : MonoBehaviour
             UIManager.isPassingMessage = true;
             color += 1;
             Destroy(collision.gameObject);
+            ColorHolder.SetActive(true);
+            Color.GetComponent<Image>().color = new Color32(255,255,255,255);
         }
         if (collision.gameObject.tag == "Level304")
         {
@@ -57,6 +62,7 @@ public class PlayerCollision : MonoBehaviour
                 UIManager.MessageText = "You got the Violet color.";
                 UIManager.isPassingMessage = true;
                 color = 1;
+                Color.GetComponent<Image>().color = new Color32(212, 66, 255, 255);
             }
             else
             {
@@ -70,6 +76,7 @@ public class PlayerCollision : MonoBehaviour
                 UIManager.MessageText = "You got the Orange color.";
                 UIManager.isPassingMessage = true;
                 color = 2;
+                Color.GetComponent<Image>().color = new Color32(255, 123, 37, 255);
             }
             else
             {
@@ -83,6 +90,7 @@ public class PlayerCollision : MonoBehaviour
                 UIManager.MessageText = "You got the Yellow color.";
                 UIManager.isPassingMessage = true;
                 color = 3;
+                Color.GetComponent<Image>().color = new Color32(231, 179, 47, 255);
             }
             else
             {
@@ -96,6 +104,7 @@ public class PlayerCollision : MonoBehaviour
                 UIManager.MessageText = "You got the Cyan.";
                 UIManager.isPassingMessage = true;
                 color = 4;
+                Color.GetComponent<Image>().color = new Color32(100, 252, 255, 255);
             }
             else
             {
@@ -109,6 +118,7 @@ public class PlayerCollision : MonoBehaviour
                 UIManager.MessageText = "You got the Sliver color.";
                 UIManager.isPassingMessage = true;
                 color = 5;
+                Color.GetComponent<Image>().color = new Color32(226, 226, 226, 255);
             }
             else
             {
@@ -124,6 +134,7 @@ public class PlayerCollision : MonoBehaviour
                 color = 0;
                 xcolor += 1;
                 Destroy(collision.gameObject);
+                Color.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
             if (color == -1)
             {
@@ -132,6 +143,7 @@ public class PlayerCollision : MonoBehaviour
             else
             {
                 color = 0;
+                Color.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
         }
         if (collision.gameObject.tag == "Level311")
@@ -143,6 +155,7 @@ public class PlayerCollision : MonoBehaviour
                 color = 0;
                 xcolor += 1;
                 Destroy(collision.gameObject);
+                Color.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
             if (color == -1)
             {
@@ -151,6 +164,7 @@ public class PlayerCollision : MonoBehaviour
             else
             {
                 color = 0;
+                Color.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
         }
         if (collision.gameObject.tag == "Level312")
@@ -162,6 +176,7 @@ public class PlayerCollision : MonoBehaviour
                 color = 0;
                 xcolor += 1;
                 Destroy(collision.gameObject);
+                Color.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
             if (color == -1)
             {
@@ -170,10 +185,12 @@ public class PlayerCollision : MonoBehaviour
             else
             {
                 color = 0;
+                Color.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
         }
         if (xcolor == 3)
         {
+            ColorHolder.SetActive(false);
             LevelManager.CurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
             xcolor = 0;
         }
