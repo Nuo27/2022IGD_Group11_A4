@@ -13,6 +13,23 @@ TagManager:
   - music
   - LevelTransition
   - LetsJump
+  - Level311
+  - Level302
+  - Level305
+  - Level303
+  - Level304
+  - Level312
+  - Level306
+  - Level301
+  - Level310
+  - Level308
+  - Level307
+  - Thing
+  - Key
+  - Message
+  - NeedKey
+  - WrongDoor
+  - Trytry
   layers:
   - Default
   - TransparentFX

@@ -232,6 +232,19 @@ public class PlayerCollision : MonoBehaviour
                 UIManager.isPassingMessage = true;
             }
         }
+        if(collision.gameObject.tag == "WrongDoor"){
+            UIManager.MessageText = "Wrong door man..";
+            UIManager.isPassingMessage = true;
+        }
+        if(collision.gameObject.tag == "Trytry"){
+            UIManager.MessageText = "it's hard...timing*position";
+            UIManager.isPassingMessage = true;
+        }
 
+    }
+    void OnTriggerStay(Collider collision) {
+        if(collision.gameObject.tag == "Trytry"){
+            UIManager.isPassingMessage = false;
+        }
     }
 }

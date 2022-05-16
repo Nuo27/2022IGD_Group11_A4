@@ -17,6 +17,10 @@ public class StartSceneManager : MonoBehaviour
     public static bool isReturningToMain;
     public GameObject tutorialReminder;
     
+    private void Awake() {
+        //fps 60
+        Application.targetFrameRate = 60;
+    }
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
