@@ -198,7 +198,6 @@ public class UIManager : MonoBehaviour
         print("Now Pause");
     }
     public void OnClickResume(){
-        
         pauseMenu.SetActive(false);
         LeanTween.moveLocalX(Pause, -1300, 1f);
         isGamePaused = false;
