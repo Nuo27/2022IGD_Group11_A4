@@ -68,7 +68,8 @@ public class PlayerMovement : MonoBehaviour
         //movement inputs
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
-        if(PromptManager.enableMouseInput){
+
+        if(PromptManager.enableMouseInput || LevelManager.isTutorialObjectiveComplete){
             getMouseInput();
         }
         //getMouseInput();

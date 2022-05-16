@@ -24,12 +24,12 @@ public class StartSceneManager : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
-        if(isTutorialDone){
-            Debug.Log("Tutorial Done");
-        }
-        if(isReturningToMain){
-            Debug.Log("Returned to Main");
-        }
+        // if(isTutorialDone){
+        //     Debug.Log("Tutorial Done");
+        // }
+        // if(isReturningToMain){
+        //     Debug.Log("Returned to Main");
+        // }
         // bool TestCheckMethod = LevelManager.checkCurrentLevelAccomplished(LevelManager.GetCurrentLevelIndex());
         // Debug.Log("Test Check Method: " + TestCheckMethod);
     }

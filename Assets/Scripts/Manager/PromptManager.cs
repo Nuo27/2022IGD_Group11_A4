@@ -26,7 +26,9 @@ public class PromptManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         enableMouseInput = false;
+
         enableTutorialObjectives = false;
         Invoke("showPromptBox", 1f);
         setPromptText("Move around with WASD", "Hide", "Hide");
