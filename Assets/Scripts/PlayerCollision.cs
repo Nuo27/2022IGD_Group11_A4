@@ -38,7 +38,7 @@ public class PlayerCollision : MonoBehaviour
         }
         if (collision.gameObject.tag == "Level301")
         {
-            UIManager.MessageText = ""Red + blue = Violet.\nRed + Yellow = orange.\nRed + Green = Yellow.\nBlue + Green = Cyan.\nBlue + Yellow = Sliver.\nMix two 'colors' in one room.\nGet 'colors' in the hallway and apply it with the palette knife."";
+            UIManager.MessageText = "Red + blue = Violet.\nRed + Yellow = orange.\nRed + Green = Yellow.\nBlue + Green = Cyan.\nBlue + Yellow = Sliver.\nMix two 'colors' in one room.\nGet 'colors' in the hallway and apply it with the palette knife.";
             UIManager.isPassingMessage = true;
         }
         if (collision.gameObject.tag == "Level302")
