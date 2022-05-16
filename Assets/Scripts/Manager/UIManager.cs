@@ -160,7 +160,7 @@ public class UIManager : MonoBehaviour
             case 4:
                 return "You escaped..."+ " Return to Main in 3 sec...";
             case 5:
-                return "Level Tutorial Objective Accomplished" + " Return to Main in 3 sec...";
+                return "Tutorial Done!" + " Return to Main in 3 sec...";
             default:
                 return "";
         }
