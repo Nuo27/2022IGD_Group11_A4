@@ -23,10 +23,12 @@ public class UIManager : MonoBehaviour
     public GameObject MessagePassHolder;
     public TMPro.TextMeshProUGUI MessagePass;
     public static string MessageText = "";
+    private Vector3 OPos;
     
     void Start()
     {
-        
+        //OPos = current player position
+        OPos = GameObject.FindGameObjectWithTag("Player").transform.position;
         //if restarting level, reset everthing
         AccomplishedObjectiveText.text = SetAccomplishedObjectiveText(LevelManager.GetCurrentLevelIndex());
         ObjectiveText.text = SetObjectiveText(LevelManager.GetCurrentLevelIndex());

@@ -11,6 +11,13 @@ public class Collect_Diary : MonoBehaviour
     public static bool Diary5 = false;
     public AudioSource collectSound;
 
+    private void Awake() {
+        Diary1 = false;
+        Diary2 = false;
+        Diary3 = false;
+        Diary4 = false;
+        Diary5 = false;
+    }
     void OnTriggerEnter(Collider other)
     {
         
