@@ -9,6 +9,9 @@ public class CollectingSystem : MonoBehaviour
     public static int theScore;
     public GameObject finalTrigger;
 
+    private void Awake() {
+        theScore = 0;
+    }
     void Update()
     {
         collectText.GetComponent<Text>().text = "Diaries Collected: " + theScore;

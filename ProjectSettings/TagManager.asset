@@ -30,6 +30,7 @@ TagManager:
   - NeedKey
   - WrongDoor
   - Trytry
+  - ShowSearch
   layers:
   - Default
   - TransparentFX

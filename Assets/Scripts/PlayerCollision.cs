@@ -240,9 +240,12 @@ public class PlayerCollision : MonoBehaviour
             UIManager.MessageText = "it's hard...timing*position";
             UIManager.isPassingMessage = true;
         }
-
+        if(collision.gameObject.tag == "ShowSearch"){
+            UIManager.MessageText = "search around...d..o..w..n..";
+            UIManager.isPassingMessage = true;
+        }
     }
-    void OnTriggerStay(Collider collision) {
+    void OnTriggerExit(Collider collision) {
         if(collision.gameObject.tag == "Trytry"){
             UIManager.isPassingMessage = false;
         }
